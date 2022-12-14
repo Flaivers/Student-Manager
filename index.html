@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>student manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="menu">
+        <input type="button" onclick="showStudentCreate()" value="Create students" id="Create">
+        <br>
+        <input type="button" onclick="showStudentDelete()" value="Delete students" id="Delete">
+        <br>
+        <input type="button" onclick="showStudentUpdate()" value="Update students" id="Update">
+    </div>
+    
+
+    <div class="inputLine">
+        <label>Name: <input type="text" id="Name"></label>
+        <br>
+        <label>Surname: <input type="text" id="Surname"></label>
+        <br>
+        <label>Birthday: <input type="text" id="Birthday"></label>
+        <br>
+        <label>Group: <input type="text" id="Group"></label>
+        <br>
+        <input type="button" onclick="createStudent(),hideStudentCreate(),createTable()" value="Create" id="1">
+    </div> 
+
+
+    <div class="delete">
+      <label> Enter Surname: <input type="text" id="DeleteSurname"></label>
+      <br>
+      <input type="button" onclick="deleteStudent(),hideStudentDelete(),createTable()" value="Delete" id="2">
+    </div>
+
+
+    <div class="update">
+      <label> Enter Surname: <input type="text" id="UpdateSurname"></label>
+      <br>
+      <label> What do you want to change: <input type="text" id="UpdateData"></label>
+      <br>
+      <label> Enter changes: <input type="text" id="EnterChanges"></label>
+      <br>
+      <input type="button" onclick="updateStudent(),hideStudentUpdate(),createTable()" value="Update" id="3">
+    </div>
+
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Birthday</th>
+          <th scope="col">Group</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    
+    
+
+    
+    </div>
+
+  </body>
+
+  <script src="studentManager.js"></script>
+ 
+</html>
