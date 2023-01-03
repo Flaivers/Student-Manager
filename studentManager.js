@@ -2,38 +2,40 @@
 
 class StudentManager {
   constructor() {
-    let createButton = document.getElementById("createButton");
+    this.createTable();
+
+    const createButton = document.getElementById("createButton");
     createButton.onclick = function () {
       this.createStudent();
       this.hideStudentCreate();
       this.createTable();
     }.bind(this);
 
-    let deleteButton = document.getElementById("deleteButton");
+    const deleteButton = document.getElementById("deleteButton");
     deleteButton.onclick = function () {
       this.deleteStudent();
       this.hideStudentDelete();
       this.createTable();
     }.bind(this);
 
-    let updateButton = document.getElementById("updateButton");
+    const updateButton = document.getElementById("updateButton");
     updateButton.onclick = function () {
       this.updateStudent();
       this.hideStudentUpdate();
       this.createTable()
     }.bind(this);
 
-    let showStudentCreate = document.getElementById("showStudentCreate");
+    const showStudentCreate = document.getElementById("showStudentCreate");
     showStudentCreate.onclick = function () {
       this.showStudentCreate();
     }.bind(this);
 
-    let showStudentDelete = document.getElementById("showStudentDelete");
+    const showStudentDelete = document.getElementById("showStudentDelete");
     showStudentDelete.onclick = function () {
       this.showStudentDelete();
     }.bind(this);
 
-    let showStudentUpdate = document.getElementById("showStudentUpdate");
+    const showStudentUpdate = document.getElementById("showStudentUpdate");
     showStudentUpdate.onclick = function () {
       this.showStudentUpdate();
     }.bind(this);
@@ -52,11 +54,11 @@ class StudentManager {
   }
 
   deleteStudent() {
-    const foundStudent = document.getElementById("deleteSurname").value;
-    const student = this.students.find((o) => o.surname == foundStudent);
+    const foundStudentSurname = document.getElementById("deleteSurname").value;
+    const student = this.students.find((o) => o.surname === foundStudentSurname);
     if (student !== undefined) {
       this.students.splice(student, 1);
-      alert("Student delete");
+      alert("Student is deleted");
     } else {
       alert("There is no such value");
     }
@@ -64,7 +66,7 @@ class StudentManager {
 
   updateStudent() {
     const foundStudent = document.getElementById("updateSurname").value;
-    const student = this.students.find((o) => o.surname == foundStudent);
+    const student = this.students.find((o) => o.surname === foundStudent);
     if (foundStudent == true) {
       const changeSelection = document.getElementById("updateData").value;
       switch (changeSelection) {
