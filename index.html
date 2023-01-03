@@ -10,11 +10,11 @@
   <body>
 
     <div class="menu">
-        <input type="button" onclick="showStudentCreate()" value="Create students" id="Create">
+        <input type="button" value="Create students" id="showStudentCreate">
         <br>
-        <input type="button" onclick="showStudentDelete()" value="Delete students" id="Delete">
+        <input type="button" value="Delete students" id="showStudentDelete">
         <br>
-        <input type="button" onclick="showStudentUpdate()" value="Update students" id="Update">
+        <input type="button" value="Update students" id="showStudentUpdate">
     </div>
     
 
@@ -27,25 +27,25 @@
         <br>
         <label>Group: <input type="text" id="Group"></label>
         <br>
-        <input type="button" onclick="createStudent(),hideStudentCreate(),createTable()" value="Create" id="1">
+        <input type="button" value="Create" id="createButton">
     </div> 
 
 
     <div class="delete">
-      <label> Enter Surname: <input type="text" id="DeleteSurname"></label>
+      <label> Enter Surname: <input type="text" id="deleteSurname"></label>
       <br>
-      <input type="button" onclick="deleteStudent(),hideStudentDelete(),createTable()" value="Delete" id="2">
+      <input type="button" value="Delete" id="deleteButton">
     </div>
 
 
     <div class="update">
-      <label> Enter Surname: <input type="text" id="UpdateSurname"></label>
+      <label> Enter Surname: <input type="text" id="updateSurname"></label>
       <br>
-      <label> What do you want to change: <input type="text" id="UpdateData"></label>
+      <label> What do you want to change: <input type="text" id="updateData"></label>
       <br>
-      <label> Enter changes: <input type="text" id="EnterChanges"></label>
+      <label> Enter changes: <input type="text" id="enterChanges"></label>
       <br>
-      <input type="button" onclick="updateStudent(),hideStudentUpdate(),createTable()" value="Update" id="3">
+      <input type="button" value="Update" id="updateButton">
     </div>
 
 
@@ -60,15 +60,12 @@
         </thead>
         <tbody></tbody>
       </table>
-
-    
-    
-
     
     </div>
 
   </body>
-
+  <script src="student.js"></script>
   <script src="studentManager.js"></script>
+  <script src="app.js"></script>
  
 </html>

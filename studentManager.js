@@ -1,106 +1,140 @@
 /*jshint esversion: 6 */
 
-let students =[];
+class StudentManager {
+  constructor() {
+    let createButton = document.getElementById("createButton");
+    createButton.onclick = function () {
+      this.createStudent();
+      this.hideStudentCreate();
+      this.createTable();
+    }.bind(this);
 
-  function Student(name, surname, birthday, group) {
-    this.name = name;
-    this.surname = surname;
-    this.birthday = birthday;
-    this.group = group;
+    let deleteButton = document.getElementById("deleteButton");
+    deleteButton.onclick = function () {
+      this.deleteStudent();
+      this.hideStudentDelete();
+      this.createTable();
+    }.bind(this);
+
+    let updateButton = document.getElementById("updateButton");
+    updateButton.onclick = function () {
+      this.updateStudent();
+      this.hideStudentUpdate();
+      this.createTable()
+    }.bind(this);
+
+    let showStudentCreate = document.getElementById("showStudentCreate");
+    showStudentCreate.onclick = function () {
+      this.showStudentCreate();
+    }.bind(this);
+
+    let showStudentDelete = document.getElementById("showStudentDelete");
+    showStudentDelete.onclick = function () {
+      this.showStudentDelete();
+    }.bind(this);
+
+    let showStudentUpdate = document.getElementById("showStudentUpdate");
+    showStudentUpdate.onclick = function () {
+      this.showStudentUpdate();
+    }.bind(this);
   }
 
-  
-  function createStudent(){
+  students = [new Student("Bob", "Anin", 2000, 1)];
+
+  createStudent() {
     const name = document.getElementById("Name").value;
     const surname = document.getElementById("Surname").value;
     const birthday = document.getElementById("Birthday").value;
     const group = document.getElementById("Group").value;
     const student = new Student(name, surname, birthday, group);
-    students.push(student);
+    this.students.push(student);
     alert("Students create");
   }
 
-
-  function deleteStudent(){
-    const foundStudent = document.getElementById("DeleteSurname").value;
-    const student = students.find(o => o.surname == foundStudent);
-    if (student !== undefined){
-    students.splice(student, 1);
-    alert( "Student delete" );
+  deleteStudent() {
+    const foundStudent = document.getElementById("deleteSurname").value;
+    const student = this.students.find((o) => o.surname == foundStudent);
+    if (student !== undefined) {
+      this.students.splice(student, 1);
+      alert("Student delete");
     } else {
-      alert( "There is no such value" );
+      alert("There is no such value");
     }
   }
 
-
-  function updateStudent(){
-    const foundStudent = document.getElementById("UpdateSurname").value;
-    const student = students.find(o => o.surname == foundStudent);
+  updateStudent() {
+    const foundStudent = document.getElementById("updateSurname").value;
+    const student = this.students.find((o) => o.surname == foundStudent);
     if (foundStudent == true) {
-      //const keys = Object.keys(student);
-      //const keysString = keys.toString();
-      const changeSelection = document.getElementById("UpdateData").value;
+      const changeSelection = document.getElementById("updateData").value;
       switch (changeSelection) {
         case "name":
         case "surname":
         case "birthday":
         case "group":
-          const whatToChange = document.getElementById("EnterChanges").value; 
+          const whatToChange = document.getElementById("enterChanges").value;
           student[changeSelection] = whatToChange;
-          alert( "Student update" );
+          alert("Student update");
           break;
-      
+
         default:
-          alert( "There is no such value" );
+          alert("There is no such value");
       }
     } else {
-      alert( "There is no such value" );
+      alert("There is no such value");
     }
   }
 
-
-  function showStudentCreate(){
-   let elements = document.getElementsByClassName("inputLine");
-   elements[0].style.display = "flex";
-  }
-
-  function hideStudentCreate(){
-    let elements = document.getElementsByClassName("inputLine");
-    elements[0].style.display = "none";
-   }
-
-  function showStudentDelete(){
-    let elements = document.getElementsByClassName("delete");
-    elements[0].style.display = "flex";
-  }
-
-  function hideStudentDelete(){
-    let elements = document.getElementsByClassName("delete");
-    elements[0].style.display = "none";
-  }
-
-  function showStudentUpdate(){
-    let elements = document.getElementsByClassName("update");
-    elements[0].style.display = "flex";
-  }
-
-  function hideStudentUpdate(){
-    let elements = document.getElementsByClassName("update");
-    elements[0].style.display = "none";
-  }
-
-
-  function createTable(){
-    let tbody = document.querySelector('tbody');
+  createTable() {
+    let tbody = document.querySelector("tbody");
     tbody.innerHTML = "";
-    for(let i = 0; i < students.length; i++)
-    {
-	    let tr = document.createElement('tr');
-	    tr.innerHTML =
-		    '<td>' + students[i].name + '</td>' +
-		    '<td>' + students[i].surname + '</td>' +
-        '<td>' + students[i].birthday + '</td>' +
-		    '<td>' + students[i].group + '</td>';
-	    tbody.appendChild(tr);
+    for (let i = 0; i < this.students.length; i++) {
+      let tr = document.createElement("tr");
+      tr.innerHTML =
+        "<td>" +
+        this.students[i].name +
+        "</td>" +
+        "<td>" +
+        this.students[i].surname +
+        "</td>" +
+        "<td>" +
+        this.students[i].birthday +
+        "</td>" +
+        "<td>" +
+        this.students[i].group +
+        "</td>";
+      tbody.appendChild(tr);
     }
   }
+
+
+  showStudentCreate(){
+    let elements = document.getElementsByClassName("inputLine");
+    elements[0].style.display = "flex";
+   }
+ 
+  hideStudentCreate(){
+     let elements = document.getElementsByClassName("inputLine");
+     elements[0].style.display = "none";
+    }
+ 
+  showStudentDelete(){
+     let elements = document.getElementsByClassName("delete");
+     elements[0].style.display = "flex";
+   }
+ 
+  hideStudentDelete(){
+     let elements = document.getElementsByClassName("delete");
+     elements[0].style.display = "none";
+   }
+ 
+  showStudentUpdate(){
+     let elements = document.getElementsByClassName("update");
+     elements[0].style.display = "flex";
+   }
+ 
+  hideStudentUpdate(){
+     let elements = document.getElementsByClassName("update");
+     elements[0].style.display = "none";
+   }
+}
