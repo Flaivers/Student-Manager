@@ -1,4 +1,1 @@
-/*jshint esversion: 6 */
-
-let manager = new StudentManager();
-manager.createTable();
+const manager = new StudentManager();

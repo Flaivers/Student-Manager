@@ -1,6 +1,3 @@
-/*jshint esversion: 6 */
-
-
 class Student {
     constructor( name, surname, birthday, group) {
         this.name = name;
