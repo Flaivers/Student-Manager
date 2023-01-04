@@ -1,5 +1,3 @@
-/*jshint esversion: 6 */
-
 class StudentManager {
   constructor() {
     this.createTable();

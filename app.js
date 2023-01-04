@@ -1,3 +1,1 @@
-/*jshint esversion: 6 */
-
-let manager = new StudentManager();
+const manager = new StudentManager();
