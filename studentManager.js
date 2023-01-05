@@ -3,13 +3,13 @@ class StudentManager {
     this.createTable();
 
     const createB = document.getElementById("createButton");
-    createB.addEventListener("click", this.createButton.bind(this));
+    createB.addEventListener("click", this.handleCreateStudentClick.bind(this));
   
     const deleteB = document.getElementById("deleteButton");
-    deleteB.addEventListener("click", this.deleteButton.bind(this));
+    deleteB.addEventListener("click", this.handleDeleteStudentClick.bind(this));
 
     const updateB = document.getElementById("updateButton");
-    updateB.addEventListener("click", this.updateButton.bind(this));
+    updateB.addEventListener("click", this.handleUpdateStudentClick.bind(this));
 
     const showStudentC = document.getElementById("showStudentCreate");
     showStudentC.addEventListener("click", this.showStudentCreate.bind(this));
@@ -121,19 +121,19 @@ class StudentManager {
   }
   
   
-  createButton () { 
+  handleCreateStudentClick () { 
     this.createStudent();
     this.hideStudentCreate();
     this.createTable();
   }
 
-  deleteButton () {
+  handleDeleteStudentClick () {
     this.deleteStudent();
     this.hideStudentDelete();
     this.createTable();
   }
 
-  updateButton () {
+  handleUpdateStudentClick () {
     this.updateStudent();
     this.hideStudentUpdate();
     this.createTable()
