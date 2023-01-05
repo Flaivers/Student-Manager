@@ -2,28 +2,17 @@ class StudentManager {
   constructor() {
     this.createTable();
 
-    const createButton = document.getElementById("createButton");
-    createButton.onclick = function () {
-      this.createStudent();
-      this.hideStudentCreate();
-      this.createTable();
-    }.bind(this);
+    const createB = document.getElementById("createButton");
+    createB.addEventListener("click", this.createButton);
+  
+    const deleteB = document.getElementById("deleteButton");
+    deleteB.addEventListener("click", this.deleteButton);
 
-    const deleteButton = document.getElementById("deleteButton");
-    deleteButton.onclick = function () {
-      this.deleteStudent();
-      this.hideStudentDelete();
-      this.createTable();
-    }.bind(this);
-
-    const updateButton = document.getElementById("updateButton");
-    updateButton.onclick = function () {
-      this.updateStudent();
-      this.hideStudentUpdate();
-      this.createTable()
-    }.bind(this);
+    const updateB = document.getElementById("updateButton");
+    updateB.addEventListener("click", this.updateButton);
 
     const showStudentCreate = document.getElementById("showStudentCreate");
+    //showStudentCreate.addEventListener("click", this.showStudentCreate());
     showStudentCreate.onclick = function () {
       this.showStudentCreate();
     }.bind(this);
@@ -111,30 +100,52 @@ class StudentManager {
   showStudentCreate(){
     let elements = document.getElementsByClassName("inputLine");
     elements[0].style.display = "flex";
-   }
+  }
  
   hideStudentCreate(){
      let elements = document.getElementsByClassName("inputLine");
      elements[0].style.display = "none";
-    }
+  }
  
   showStudentDelete(){
      let elements = document.getElementsByClassName("delete");
      elements[0].style.display = "flex";
-   }
+  }
  
   hideStudentDelete(){
      let elements = document.getElementsByClassName("delete");
      elements[0].style.display = "none";
-   }
+  }
  
   showStudentUpdate(){
      let elements = document.getElementsByClassName("update");
      elements[0].style.display = "flex";
-   }
+  }
  
   hideStudentUpdate(){
      let elements = document.getElementsByClassName("update");
      elements[0].style.display = "none";
-   }
+  }
+  
+  
+  createButton () { 
+    this.createStudent();
+    this.hideStudentCreate();
+    this.createTable();
+  }
+
+  deleteButton () {
+    this.deleteStudent();
+    this.hideStudentDelete();
+    this.createTable();
+  }
+
+  updateButton () {
+    this.updateStudent();
+    this.hideStudentUpdate();
+    this.createTable()
+  }
+
+
+
 }
