@@ -3,29 +3,22 @@ class StudentManager {
     this.createTable();
 
     const createB = document.getElementById("createButton");
-    createB.addEventListener("click", this.createButton);
+    createB.addEventListener("click", this.createButton.bind(this));
   
     const deleteB = document.getElementById("deleteButton");
-    deleteB.addEventListener("click", this.deleteButton);
+    deleteB.addEventListener("click", this.deleteButton.bind(this));
 
     const updateB = document.getElementById("updateButton");
-    updateB.addEventListener("click", this.updateButton);
+    updateB.addEventListener("click", this.updateButton.bind(this));
 
-    const showStudentCreate = document.getElementById("showStudentCreate");
-    //showStudentCreate.addEventListener("click", this.showStudentCreate());
-    showStudentCreate.onclick = function () {
-      this.showStudentCreate();
-    }.bind(this);
+    const showStudentC = document.getElementById("showStudentCreate");
+    showStudentC.addEventListener("click", this.showStudentCreate.bind(this));
 
-    const showStudentDelete = document.getElementById("showStudentDelete");
-    showStudentDelete.onclick = function () {
-      this.showStudentDelete();
-    }.bind(this);
+    const showStudentD = document.getElementById("showStudentDelete");
+    showStudentD.addEventListener("click", this.showStudentDelete.bind(this));
 
-    const showStudentUpdate = document.getElementById("showStudentUpdate");
-    showStudentUpdate.onclick = function () {
-      this.showStudentUpdate();
-    }.bind(this);
+    const showStudentU = document.getElementById("showStudentUpdate");
+    showStudentU.addEventListener("click", this.showStudentUpdate.bind(this));
   }
 
   students = [new Student("Bob", "Anin", 2000, 1)];
