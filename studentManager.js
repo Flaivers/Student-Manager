@@ -2,41 +2,23 @@ class StudentManager {
   constructor() {
     this.createTable();
 
-    const createButton = document.getElementById("createButton");
-    createButton.onclick = function () {
-      this.createStudent();
-      this.hideStudentCreate();
-      this.createTable();
-    }.bind(this);
+    const createB = document.getElementById("createButton");
+    createB.addEventListener("click", this.handleCreateStudentClick.bind(this));
+  
+    const deleteB = document.getElementById("deleteButton");
+    deleteB.addEventListener("click", this.handleDeleteStudentClick.bind(this));
 
-    const deleteButton = document.getElementById("deleteButton");
-    deleteButton.onclick = function () {
-      this.deleteStudent();
-      this.hideStudentDelete();
-      this.createTable();
-    }.bind(this);
+    const updateB = document.getElementById("updateButton");
+    updateB.addEventListener("click", this.handleUpdateStudentClick.bind(this));
 
-    const updateButton = document.getElementById("updateButton");
-    updateButton.onclick = function () {
-      this.updateStudent();
-      this.hideStudentUpdate();
-      this.createTable()
-    }.bind(this);
+    const showStudentC = document.getElementById("showStudentCreate");
+    showStudentC.addEventListener("click", this.showStudentCreate.bind(this));
 
-    const showStudentCreate = document.getElementById("showStudentCreate");
-    showStudentCreate.onclick = function () {
-      this.showStudentCreate();
-    }.bind(this);
+    const showStudentD = document.getElementById("showStudentDelete");
+    showStudentD.addEventListener("click", this.showStudentDelete.bind(this));
 
-    const showStudentDelete = document.getElementById("showStudentDelete");
-    showStudentDelete.onclick = function () {
-      this.showStudentDelete();
-    }.bind(this);
-
-    const showStudentUpdate = document.getElementById("showStudentUpdate");
-    showStudentUpdate.onclick = function () {
-      this.showStudentUpdate();
-    }.bind(this);
+    const showStudentU = document.getElementById("showStudentUpdate");
+    showStudentU.addEventListener("click", this.showStudentUpdate.bind(this));
   }
 
   students = [new Student("Bob", "Anin", 2000, 1)];
@@ -111,30 +93,52 @@ class StudentManager {
   showStudentCreate(){
     let elements = document.getElementsByClassName("inputLine");
     elements[0].style.display = "flex";
-   }
+  }
  
   hideStudentCreate(){
      let elements = document.getElementsByClassName("inputLine");
      elements[0].style.display = "none";
-    }
+  }
  
   showStudentDelete(){
      let elements = document.getElementsByClassName("delete");
      elements[0].style.display = "flex";
-   }
+  }
  
   hideStudentDelete(){
      let elements = document.getElementsByClassName("delete");
      elements[0].style.display = "none";
-   }
+  }
  
   showStudentUpdate(){
      let elements = document.getElementsByClassName("update");
      elements[0].style.display = "flex";
-   }
+  }
  
   hideStudentUpdate(){
      let elements = document.getElementsByClassName("update");
      elements[0].style.display = "none";
-   }
+  }
+  
+  
+  handleCreateStudentClick () { 
+    this.createStudent();
+    this.hideStudentCreate();
+    this.createTable();
+  }
+
+  handleDeleteStudentClick () {
+    this.deleteStudent();
+    this.hideStudentDelete();
+    this.createTable();
+  }
+
+  handleUpdateStudentClick () {
+    this.updateStudent();
+    this.hideStudentUpdate();
+    this.createTable()
+  }
+
+
+
 }
