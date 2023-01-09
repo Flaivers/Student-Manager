@@ -1,1 +1,1 @@
-const manager = new StudentManager();
+const platform = new BrowserPlatform();
