@@ -58,18 +58,19 @@ class BrowserPlatform {
       tbody.innerHTML = "";
       for (let i = 0; i < this.manager.students.length; i++) {
         let tr = document.createElement("tr");
+        let currentStudent = this.manager.students[i];
         tr.innerHTML =
           "<td>" +
-          this.manager.students[i].name +
+          currentStudent.name +
           "</td>" +
           "<td>" +
-          this.manager.students[i].surname +
+          currentStudent.surname +
           "</td>" +
           "<td>" +
-          this.manager.students[i].birthday +
+          currentStudent.birthday +
           "</td>" +
           "<td>" +
-          this.manager.students[i].group +
+          currentStudent.group +
           "</td>";
         tbody.appendChild(tr);
       }
