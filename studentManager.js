@@ -1,8 +1,9 @@
-class StudentManager {
+import {Student} from "./student.js";
+export class StudentManager {
   constructor() {
   }
 
-  students = [new Student("Bob", "Anin", 2000, 1)];
+  students = [new Student("Bob", "Ann", 2000, 1)];
 
   createStudent(name, surname, birthday, group) {
     const student = new Student(name, surname, birthday, group);
