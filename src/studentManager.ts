@@ -9,18 +9,18 @@ export class StudentManager {
     surname: string,
     birthday: number,
     group: number
-  ) {
+  ): void {
     const student = new Student(name, surname, birthday, group);
     this.students.push(student);
   }
 
-  deleteStudent(foundStudentSurname: string) {
+  deleteStudent(studentSurname: string) {
     const student: Student | undefined = this.students.find(
-      (o) => o.surname === foundStudentSurname
+      (o) => o.surname === studentSurname
     );
     if (student !== undefined) {
       const studentIndex = this.students.findIndex(
-        (o) => o.surname === foundStudentSurname
+        (o) => o.surname === studentSurname
       );
       this.students.splice(studentIndex, 1);
       return true;

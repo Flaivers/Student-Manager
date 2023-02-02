@@ -23,18 +23,19 @@ export class BrowserPlatform {
     showStudentU.addEventListener("click", this.showStudentUpdate.bind(this));
   }
 
-  createStudent() {
-    const name = getElementById("Name").value;
-    const surname = getElementById("Surname").value;
-    const birthday = getElementById("Birthday").value;
-    const group = getElementById("Group").value;
+  createStudent(): void {
+    const name = getElementById<HTMLInputElement>("Name").value;
+    const surname = getElementById<HTMLInputElement>("Surname").value;
+    const birthday = getElementById<HTMLInputElement>("Birthday").value;
+    const group = getElementById<HTMLInputElement>("Group").value;
     this.manager.createStudent(name, surname, birthday, group);
     alert("Students create");
   }
 
-  deleteStudent() {
-    const foundStudentSurname = getElementById("deleteSurname").value;
-    let result = this.manager.deleteStudent(foundStudentSurname);
+  deleteStudent(): void {
+    const studentSurname =
+      getElementById<HTMLInputElement>("deleteSurname").value;
+    let result = this.manager.deleteStudent(studentSurname);
     if (result === true) {
       alert("Student is deleted");
     } else {
@@ -42,10 +43,12 @@ export class BrowserPlatform {
     }
   }
 
-  updateStudent() {
-    const inputSurname = getElementById("updateSurname").value;
-    const changeSelection = getElementById("updateData").value;
-    const whatToChange = getElementById("enterChanges").value;
+  updateStudent(): void {
+    const inputSurname =
+      getElementById<HTMLInputElement>("updateSurname").value;
+    const changeSelection =
+      getElementById<HTMLInputElement>("updateData").value;
+    const whatToChange = getElementById<HTMLInputElement>("enterChanges").value;
     let result = this.manager.updateStudent(
       inputSurname,
       changeSelection,
@@ -58,7 +61,7 @@ export class BrowserPlatform {
     }
   }
 
-  private createTable() {
+  private createTable(): void {
     let tbody = document.querySelector("tbody");
     tbody!.innerHTML = "";
     for (let i = 0; i < this.manager.students.length; i++) {
@@ -99,42 +102,42 @@ export class BrowserPlatform {
     this.createTable();
   }
 
-  private showStudentCreate() {
+  private showStudentCreate(): void {
     let elements = document.getElementsByClassName(
       "inputLine"
     ) as HTMLCollectionOf<HTMLElement>;
     elements[0].style.display = "flex";
   }
 
-  private hideStudentCreate() {
+  private hideStudentCreate(): void {
     let elements = document.getElementsByClassName(
       "inputLine"
     ) as HTMLCollectionOf<HTMLElement>;
     elements[0].style.display = "none";
   }
 
-  private showStudentDelete() {
+  private showStudentDelete(): void {
     let elements = document.getElementsByClassName(
       "delete"
     ) as HTMLCollectionOf<HTMLElement>;
     elements[0].style.display = "flex";
   }
 
-  private hideStudentDelete() {
+  private hideStudentDelete(): void {
     let elements = document.getElementsByClassName(
       "delete"
     ) as HTMLCollectionOf<HTMLElement>;
     elements[0].style.display = "none";
   }
 
-  private showStudentUpdate() {
+  private showStudentUpdate(): void {
     let elements = document.getElementsByClassName(
       "update"
     ) as HTMLCollectionOf<HTMLElement>;
     elements[0].style.display = "flex";
   }
 
-  private hideStudentUpdate() {
+  private hideStudentUpdate(): void {
     let elements = document.getElementsByClassName(
       "update"
     ) as HTMLCollectionOf<HTMLElement>;
