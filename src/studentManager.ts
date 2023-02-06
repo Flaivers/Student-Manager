@@ -14,7 +14,7 @@ export class StudentManager {
     this.students.push(student);
   }
 
-  deleteStudent(studentSurname: string) {
+  deleteStudent(studentSurname: string): boolean {
     const student: Student | undefined = this.students.find(
       (o) => o.surname === studentSurname
     );
@@ -33,7 +33,7 @@ export class StudentManager {
     inputSurname: string,
     changeSelection: keyof Student,
     whatToChange: string | number
-  ) {
+  ): boolean {
     const student: Student | undefined = this.students.find(
       (o) => o.surname === inputSurname
     );
