@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>student manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="menu">
+        <input type="button" value="Create students" id="showStudentCreate">
+        <br>
+        <input type="button" value="Delete students" id="showStudentDelete">
+        <br>
+        <input type="button" value="Update students" id="showStudentUpdate">
+    </div>
+    
+
+    <div class="inputLine">
+        <label>Name: <input type="text" id="Name"></label>
+        <br>
+        <label>Surname: <input type="text" id="Surname"></label>
+        <br>
+        <label>Birthday: <input type="text" id="Birthday"></label>
+        <br>
+        <label>Group: <input type="text" id="Group"></label>
+        <br>
+        <input type="button" value="Create" id="createButton">
+    </div> 
+
+
+    <div class="delete">
+      <label> Enter Surname: <input type="text" id="deleteSurname"></label>
+      <br>
+      <input type="button" value="Delete" id="deleteButton">
+    </div>
+
+
+    <div class="update">
+      <label> Enter Surname: <input type="text" id="updateSurname"></label>
+      <br>
+      <label> What do you want to change: <input type="text" id="updateData"></label>
+      <br>
+      <label> Enter changes: <input type="text" id="enterChanges"></label>
+      <br>
+      <input type="button" value="Update" id="updateButton">
+    </div>
+
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Birthday</th>
+          <th scope="col">Group</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    
+    </div>
+
+  </body>
+  <script src="bundle.js"></script>
+</html>

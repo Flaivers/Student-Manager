@@ -1,0 +1,55 @@
+html, body{
+    background-color: BurlyWood
+}
+
+.menu{
+    height: 100%;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputLine{
+    height: 100%;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.delete{
+    height: 100%;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.update{
+    height: 100%;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+table td {
+    border:1px solid black;
+    padding:10px;
+}
+
+table {
+    border:1px solid black;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
