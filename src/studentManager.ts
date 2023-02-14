@@ -31,7 +31,7 @@ export class StudentManager {
 
   updateStudent(
     inputSurname: string,
-    changeSelection: keyof Student,
+    changeSelection: string,
     whatToChange: string | number
   ): boolean {
     const student: Student | undefined = this.students.find(

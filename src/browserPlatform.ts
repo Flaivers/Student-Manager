@@ -1,7 +1,10 @@
 import { StudentManager } from "./studentManager";
-import { getElementById } from "./utils";
+import { getElementById, ToastManager } from "./utils";
 export class BrowserPlatform {
-  constructor(public manager: any = new StudentManager()) {
+  constructor(
+    public manager: StudentManager = new StudentManager(),
+    public toastManager: ToastManager = new ToastManager()
+  ) {
     this.createTable();
 
     const createB = getElementById("createButton");
@@ -28,8 +31,10 @@ export class BrowserPlatform {
     const surname = getElementById<HTMLInputElement>("Surname").value;
     const birthday = getElementById<HTMLInputElement>("Birthday").value;
     const group = getElementById<HTMLInputElement>("Group").value;
-    this.manager.createStudent(name, surname, birthday, group);
-    alert("Students create");
+    let numBirthday = Number(birthday);
+    let numGroup = Number(group);
+    this.manager.createStudent(name, surname, numBirthday, numGroup);
+    this.toastManager.showSuccessMessage("Students create", 3000);
   }
 
   deleteStudent(): void {
@@ -37,9 +42,9 @@ export class BrowserPlatform {
       getElementById<HTMLInputElement>("deleteSurname").value;
     let result = this.manager.deleteStudent(studentSurname);
     if (result === true) {
-      alert("Student is deleted");
+      this.toastManager.showSuccessMessage("Student is deleted", 3000);
     } else {
-      alert("Student is not deleted");
+      this.toastManager.showErrorMessage("Student is not deleted", 3000);
     }
   }
 
@@ -55,9 +60,9 @@ export class BrowserPlatform {
       whatToChange
     );
     if (result === true) {
-      alert("Student update");
+      this.toastManager.showSuccessMessage("Student update", 3000);
     } else {
-      alert("Student is not update");
+      this.toastManager.showErrorMessage("Student is not update", 3000);
     }
   }
 
