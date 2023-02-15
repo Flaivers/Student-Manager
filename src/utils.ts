@@ -12,7 +12,17 @@ interface MessageOptions {
 }
 
 export class ToastManager {
-  constructor() {}
+  private static _instance: ToastManager;
+
+  public static get instance(): ToastManager {
+    if (this._instance === undefined) {
+      this._instance = new ToastManager();
+    }
+
+    return this._instance;
+  }
+
+  private constructor() {}
 
   private showMessage(message: string, delay: number, cssClass: string) {
     const newDiv = document.createElement("div");

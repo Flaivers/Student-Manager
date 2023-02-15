@@ -2,7 +2,6 @@ import { StudentManager } from "./studentManager";
 import { getElementById, ToastManager } from "./utils";
 export class BrowserPlatform {
   #manager: StudentManager = new StudentManager();
-  private static toastManager = new ToastManager();
   constructor() {
     this.createTable();
 
@@ -33,7 +32,7 @@ export class BrowserPlatform {
     let numBirthday = Number(birthday);
     let numGroup = Number(group);
     this.#manager.createStudent(name, surname, numBirthday, numGroup);
-    BrowserPlatform.toastManager.showSuccessMessage("Students create", {
+    ToastManager.instance.showSuccessMessage("Students create", {
       delay: 3000,
     });
   }
@@ -43,11 +42,11 @@ export class BrowserPlatform {
       getElementById<HTMLInputElement>("deleteSurname").value;
     let result = this.#manager.deleteStudent(studentSurname);
     if (result === true) {
-      BrowserPlatform.toastManager.showSuccessMessage("Student is deleted", {
+      ToastManager.instance.showSuccessMessage("Student is deleted", {
         delay: 3000,
       });
     } else {
-      BrowserPlatform.toastManager.showErrorMessage("Student is not deleted", {
+      ToastManager.instance.showErrorMessage("Student is not deleted", {
         delay: 3000,
       });
     }
@@ -65,11 +64,11 @@ export class BrowserPlatform {
       whatToChange
     );
     if (result === true) {
-      BrowserPlatform.toastManager.showSuccessMessage("Student update", {
+      ToastManager.instance.showSuccessMessage("Student update", {
         delay: 3000,
       });
     } else {
-      BrowserPlatform.toastManager.showErrorMessage("Student is not update", {
+      ToastManager.instance.showErrorMessage("Student is not update", {
         delay: 3000,
       });
     }
