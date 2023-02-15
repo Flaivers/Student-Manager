@@ -1,7 +1,7 @@
 import { StudentManager } from "./studentManager";
 import { getElementById, ToastManager } from "./utils";
 export class BrowserPlatform {
-  #manager: StudentManager = new StudentManager();
+  private manager: StudentManager = new StudentManager();
   constructor() {
     this.createTable();
 
@@ -31,23 +31,26 @@ export class BrowserPlatform {
     const group = getElementById<HTMLInputElement>("Group").value;
     let numBirthday = Number(birthday);
     let numGroup = Number(group);
-    this.#manager.createStudent(name, surname, numBirthday, numGroup);
+    this.manager.createStudent(name, surname, numBirthday, numGroup);
     ToastManager.instance.showSuccessMessage("Students create", {
       delay: 3000,
+      buttonVisibility:"visible"
     });
   }
 
   deleteStudent(): void {
     const studentSurname =
       getElementById<HTMLInputElement>("deleteSurname").value;
-    let result = this.#manager.deleteStudent(studentSurname);
+    let result = this.manager.deleteStudent(studentSurname);
     if (result === true) {
       ToastManager.instance.showSuccessMessage("Student is deleted", {
         delay: 3000,
+        buttonVisibility:"visible"
       });
     } else {
       ToastManager.instance.showErrorMessage("Student is not deleted", {
         delay: 3000,
+        buttonVisibility:"visible"
       });
     }
   }
@@ -58,7 +61,7 @@ export class BrowserPlatform {
     const changeSelection =
       getElementById<HTMLInputElement>("updateData").value;
     const whatToChange = getElementById<HTMLInputElement>("enterChanges").value;
-    let result = this.#manager.updateStudent(
+    let result = this.manager.updateStudent(
       inputSurname,
       changeSelection,
       whatToChange
@@ -66,10 +69,12 @@ export class BrowserPlatform {
     if (result === true) {
       ToastManager.instance.showSuccessMessage("Student update", {
         delay: 3000,
+        buttonVisibility:"visible"
       });
     } else {
       ToastManager.instance.showErrorMessage("Student is not update", {
         delay: 3000,
+        buttonVisibility:"visible"
       });
     }
   }
@@ -77,9 +82,9 @@ export class BrowserPlatform {
   private createTable(): void {
     let tbody = document.querySelector("tbody");
     tbody!.innerHTML = "";
-    for (let i = 0; i < this.#manager.students.length; i++) {
+    for (let i = 0; i < this.manager.students.length; i++) {
       let tr = document.createElement("tr");
-      let currentStudent = this.#manager.students[i];
+      let currentStudent = this.manager.students[i];
       tr.innerHTML =
         "<td>" +
         currentStudent.name +

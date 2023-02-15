@@ -9,6 +9,7 @@ export function getElementById<T extends HTMLElement>(id: string): T {
 
 interface MessageOptions {
   delay: number;
+  buttonVisibility: string;
 }
 
 export class ToastManager {
@@ -24,12 +25,18 @@ export class ToastManager {
 
   private constructor() {}
 
-  private showMessage(message: string, delay: number, cssClass: string) {
+  private showMessage(
+    message: string,
+    delay: number,
+    buttonVisibility: string,
+    cssClass: string,
+  ) {
     const newDiv = document.createElement("div");
     newDiv.innerHTML = message;
     newDiv.classList.add("toast");
     newDiv.classList.add(cssClass);
     const newButton = document.createElement("button");
+    newButton.style.visibility = buttonVisibility;
     newButton.classList.add("btn");
     newButton.classList.add("btn-clear");
     newButton.classList.add("float-right");
@@ -42,10 +49,20 @@ export class ToastManager {
   }
 
   showSuccessMessage(message: string, options: MessageOptions): void {
-    this.showMessage(message, options.delay, "toast-success");
+    this.showMessage(
+      message,
+      options.delay,
+      options.buttonVisibility,
+      "toast-success"
+    );
   }
 
   showErrorMessage(message: string, options: MessageOptions): void {
-    this.showMessage(message, options.delay, "toast-error");
+    this.showMessage(
+      message,
+      options.delay,
+      options.buttonVisibility,
+      "toast-error"
+    );
   }
 }
