@@ -1,10 +1,9 @@
 import { StudentManager } from "./studentManager";
 import { getElementById, ToastManager } from "./utils";
 export class BrowserPlatform {
-  constructor(
-    private manager: StudentManager = new StudentManager(),
-    private toastManager: ToastManager = new ToastManager()
-  ) {
+  #manager: StudentManager = new StudentManager();
+  private static toastManager = new ToastManager();
+  constructor() {
     this.createTable();
 
     const createB = getElementById("createButton");
@@ -33,8 +32,8 @@ export class BrowserPlatform {
     const group = getElementById<HTMLInputElement>("Group").value;
     let numBirthday = Number(birthday);
     let numGroup = Number(group);
-    this.manager.createStudent(name, surname, numBirthday, numGroup);
-    this.toastManager.showAlertMessage("toast-success", "Students create", {
+    this.#manager.createStudent(name, surname, numBirthday, numGroup);
+    BrowserPlatform.toastManager.showSuccessMessage("Students create", {
       delay: 3000,
     });
   }
@@ -42,19 +41,15 @@ export class BrowserPlatform {
   deleteStudent(): void {
     const studentSurname =
       getElementById<HTMLInputElement>("deleteSurname").value;
-    let result = this.manager.deleteStudent(studentSurname);
+    let result = this.#manager.deleteStudent(studentSurname);
     if (result === true) {
-      this.toastManager.showAlertMessage(
-        "toast-success",
-        "Student is deleted",
-        { delay: 3000 }
-      );
+      BrowserPlatform.toastManager.showSuccessMessage("Student is deleted", {
+        delay: 3000,
+      });
     } else {
-      this.toastManager.showAlertMessage(
-        "toast-error",
-        "Student is not deleted",
-        { delay: 3000 }
-      );
+      BrowserPlatform.toastManager.showErrorMessage("Student is not deleted", {
+        delay: 3000,
+      });
     }
   }
 
@@ -64,30 +59,28 @@ export class BrowserPlatform {
     const changeSelection =
       getElementById<HTMLInputElement>("updateData").value;
     const whatToChange = getElementById<HTMLInputElement>("enterChanges").value;
-    let result = this.manager.updateStudent(
+    let result = this.#manager.updateStudent(
       inputSurname,
       changeSelection,
       whatToChange
     );
     if (result === true) {
-      this.toastManager.showAlertMessage("toast-success", "Student update", {
+      BrowserPlatform.toastManager.showSuccessMessage("Student update", {
         delay: 3000,
       });
     } else {
-      this.toastManager.showAlertMessage(
-        "toast-error",
-        "Student is not update",
-        { delay: 3000 }
-      );
+      BrowserPlatform.toastManager.showErrorMessage("Student is not update", {
+        delay: 3000,
+      });
     }
   }
 
   private createTable(): void {
     let tbody = document.querySelector("tbody");
     tbody!.innerHTML = "";
-    for (let i = 0; i < this.manager.students.length; i++) {
+    for (let i = 0; i < this.#manager.students.length; i++) {
       let tr = document.createElement("tr");
-      let currentStudent = this.manager.students[i];
+      let currentStudent = this.#manager.students[i];
       tr.innerHTML =
         "<td>" +
         currentStudent.name +
@@ -124,6 +117,8 @@ export class BrowserPlatform {
   }
 
   private showStudentCreate(): void {
+    this.hideStudentDelete();
+    this.hideStudentUpdate();
     let elements = document.getElementsByClassName(
       "inputLine"
     ) as HTMLCollectionOf<HTMLElement>;
@@ -138,6 +133,8 @@ export class BrowserPlatform {
   }
 
   private showStudentDelete(): void {
+    this.hideStudentCreate();
+    this.hideStudentUpdate();
     let elements = document.getElementsByClassName(
       "delete"
     ) as HTMLCollectionOf<HTMLElement>;
@@ -152,6 +149,8 @@ export class BrowserPlatform {
   }
 
   private showStudentUpdate(): void {
+    this.hideStudentCreate();
+    this.hideStudentDelete();
     let elements = document.getElementsByClassName(
       "update"
     ) as HTMLCollectionOf<HTMLElement>;

@@ -7,14 +7,14 @@ export function getElementById<T extends HTMLElement>(id: string): T {
   }
 }
 
+interface MessageOptions {
+  delay: number;
+}
+
 export class ToastManager {
   constructor() {}
 
-  showAlertMessage(
-    cssClass: string,
-    message: string,
-    options: { delay: number }
-  ): void {
+  private showMessage(message: string, delay: number, cssClass: string) {
     const newDiv = document.createElement("div");
     newDiv.innerHTML = message;
     newDiv.classList.add("toast");
@@ -25,9 +25,17 @@ export class ToastManager {
     newButton.classList.add("float-right");
     newDiv.appendChild(newButton);
     document.body.prepend(newDiv);
-    setTimeout(() => newDiv.remove(), options.delay);
+    setTimeout(() => newDiv.remove(), delay);
     newButton.onclick = function () {
       newDiv.remove();
     };
+  }
+
+  showSuccessMessage(message: string, options: MessageOptions): void {
+    this.showMessage(message, options.delay, "toast-success");
+  }
+
+  showErrorMessage(message: string, options: MessageOptions): void {
+    this.showMessage(message, options.delay, "toast-error");
   }
 }

@@ -10,6 +10,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(24, 26, 27);
 }
 
 .inputLine {
@@ -20,6 +21,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: white;
 }
 
 .delete {
@@ -30,6 +32,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: white;
 }
 
 .update {
@@ -40,15 +43,21 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  color: white;
 }
 
 table td {
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 10px;
+  color: white;
+}
+
+table th {
+  color: white;
 }
 
 table {
-  border: 1px solid black;
+  border: 1px solid white;
   width: 50%;
   margin-top: 10px;
   margin-left: auto;
