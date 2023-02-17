@@ -8,6 +8,9 @@ module.exports = {
       patterns: [
         { from: "public/index.html", to: "" },
         { from: "public/style.css", to: "" },
+        { from: "public/spectre.min.css", to: "" },
+        { from: "public/spectre-exp.min.css", to: "" },
+        { from: "public/spectre-icons.min.css", to: "" },
       ],
     }),
   ],
@@ -25,6 +28,6 @@ module.exports = {
   },
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
   },
 };

@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "build2": "webpack",
-    "cleaning": "rimraf ./dist/",
-    "start": "rimraf ./dist/ & npm run build2 & http-server ./dist/"
+    "cleaning": "rimraf ./docs/",
+    "start": "rimraf ./docs/ & npm run build2 & http-server ./docs/"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/Flaivers/Student-Manager#readme",
   "dependencies": {
-    "readline-sync": "latest"
+    "readline-sync": "latest",
+    "spectre.css": "^0.5.9"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",

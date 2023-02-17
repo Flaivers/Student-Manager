@@ -1,7 +1,9 @@
 import { StudentManager } from "./studentManager";
+import { ToastManager } from "./toastManager";
 import { getElementById } from "./utils";
 export class BrowserPlatform {
-  constructor(public manager: any = new StudentManager()) {
+  private manager: StudentManager = new StudentManager();
+  constructor() {
     this.createTable();
 
     const createB = getElementById("createButton");
@@ -28,8 +30,13 @@ export class BrowserPlatform {
     const surname = getElementById<HTMLInputElement>("Surname").value;
     const birthday = getElementById<HTMLInputElement>("Birthday").value;
     const group = getElementById<HTMLInputElement>("Group").value;
-    this.manager.createStudent(name, surname, birthday, group);
-    alert("Students create");
+    let numBirthday = Number(birthday);
+    let numGroup = Number(group);
+    this.manager.createStudent(name, surname, numBirthday, numGroup);
+    ToastManager.instance.showSuccessMessage("Students create", {
+      delay: 3000,
+      isButtonVisible: true,
+    });
   }
 
   deleteStudent(): void {
@@ -37,9 +44,15 @@ export class BrowserPlatform {
       getElementById<HTMLInputElement>("deleteSurname").value;
     let result = this.manager.deleteStudent(studentSurname);
     if (result === true) {
-      alert("Student is deleted");
+      ToastManager.instance.showSuccessMessage("Student is deleted", {
+        delay: 3000,
+        isButtonVisible: true,
+      });
     } else {
-      alert("Student is not deleted");
+      ToastManager.instance.showErrorMessage("Student is not deleted", {
+        delay: 3000,
+        isButtonVisible: true,
+      });
     }
   }
 
@@ -55,9 +68,15 @@ export class BrowserPlatform {
       whatToChange
     );
     if (result === true) {
-      alert("Student update");
+      ToastManager.instance.showSuccessMessage("Student update", {
+        delay: 3000,
+        isButtonVisible: true,
+      });
     } else {
-      alert("Student is not update");
+      ToastManager.instance.showErrorMessage("Student is not update", {
+        delay: 3000,
+        isButtonVisible: true,
+      });
     }
   }
 
@@ -103,6 +122,8 @@ export class BrowserPlatform {
   }
 
   private showStudentCreate(): void {
+    this.hideStudentDelete();
+    this.hideStudentUpdate();
     let elements = document.getElementsByClassName(
       "inputLine"
     ) as HTMLCollectionOf<HTMLElement>;
@@ -117,6 +138,8 @@ export class BrowserPlatform {
   }
 
   private showStudentDelete(): void {
+    this.hideStudentCreate();
+    this.hideStudentUpdate();
     let elements = document.getElementsByClassName(
       "delete"
     ) as HTMLCollectionOf<HTMLElement>;
@@ -131,6 +154,8 @@ export class BrowserPlatform {
   }
 
   private showStudentUpdate(): void {
+    this.hideStudentCreate();
+    this.hideStudentDelete();
     let elements = document.getElementsByClassName(
       "update"
     ) as HTMLCollectionOf<HTMLElement>;
