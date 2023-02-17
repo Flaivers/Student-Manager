@@ -1,5 +1,6 @@
 import { StudentManager } from "./studentManager";
-import { getElementById, ToastManager } from "./utils";
+import { ToastManager } from "./toastManager";
+import { getElementById } from "./utils";
 export class BrowserPlatform {
   private manager: StudentManager = new StudentManager();
   constructor() {
@@ -34,7 +35,7 @@ export class BrowserPlatform {
     this.manager.createStudent(name, surname, numBirthday, numGroup);
     ToastManager.instance.showSuccessMessage("Students create", {
       delay: 3000,
-      buttonVisibility:"visible"
+      isButtonVisible: true,
     });
   }
 
@@ -45,12 +46,12 @@ export class BrowserPlatform {
     if (result === true) {
       ToastManager.instance.showSuccessMessage("Student is deleted", {
         delay: 3000,
-        buttonVisibility:"visible"
+        isButtonVisible: true,
       });
     } else {
       ToastManager.instance.showErrorMessage("Student is not deleted", {
         delay: 3000,
-        buttonVisibility:"visible"
+        isButtonVisible: true,
       });
     }
   }
@@ -69,12 +70,12 @@ export class BrowserPlatform {
     if (result === true) {
       ToastManager.instance.showSuccessMessage("Student update", {
         delay: 3000,
-        buttonVisibility:"visible"
+        isButtonVisible: true,
       });
     } else {
       ToastManager.instance.showErrorMessage("Student is not update", {
         delay: 3000,
-        buttonVisibility:"visible"
+        isButtonVisible: true,
       });
     }
   }
