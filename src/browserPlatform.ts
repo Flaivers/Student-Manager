@@ -1,11 +1,12 @@
 import { StudentManager } from "./studentManager";
 import { ToastManager } from "./toastManager";
 import { getElementById } from "./utils";
+import { StudentsLocalStorage } from "./localStorage";
+import { StudentsSessionStorage } from "./sessionStorage";
 export class BrowserPlatform {
-  private manager: StudentManager = new StudentManager();
+  private manager: StudentManager = new StudentManager(new StudentsSessionStorage());
   constructor() {
-    this.createTable();
-
+    this.setup();
     const createB = getElementById("createButton");
     createB.addEventListener("click", this.handleCreateStudentClick.bind(this));
 
@@ -23,6 +24,11 @@ export class BrowserPlatform {
 
     const showStudentU = getElementById("showStudentUpdate");
     showStudentU.addEventListener("click", this.showStudentUpdate.bind(this));
+  }
+
+  async setup(){
+    await this.manager.setup();
+    this.createTable();
   }
 
   createStudent(): void {
