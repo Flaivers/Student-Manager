@@ -1,10 +1,10 @@
 import { StudentManager } from "./studentManager";
 import { ToastManager } from "./toastManager";
 import { getElementById } from "./utils";
-import { StudentsLocalStorage } from "./localStorage";
-import { StudentsSessionStorage } from "./sessionStorage";
+import { StudentsLocalStorage } from "./studentsLocalStorage";
+import { StudentsSessionStorage } from "./studentsSessionStorage";
 export class BrowserPlatform {
-  private manager: StudentManager = new StudentManager(new StudentsSessionStorage());
+  private manager: StudentManager = new StudentManager(new StudentsLocalStorage());
   constructor() {
     this.setup();
     const createB = getElementById("createButton");

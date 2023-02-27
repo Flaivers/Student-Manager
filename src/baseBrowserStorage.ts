@@ -1,6 +1,6 @@
 import { Student } from "./student";
 import { IStorage } from "./interface";
-export class BaseBrowserStorage implements IStorage {
+export abstract class BaseBrowserStorage implements IStorage {
   private _key: string = "test";
 
   getStudents(): Promise<Student[]> {
@@ -30,7 +30,5 @@ export class BaseBrowserStorage implements IStorage {
     this.getStorage().setItem(this._key, JSON.stringify(students));
   }
 
-  getStorage() {
-    return sessionStorage;
-  }
+  abstract getStorage(): Storage;
 }

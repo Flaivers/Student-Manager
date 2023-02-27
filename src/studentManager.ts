@@ -1,7 +1,5 @@
 import { Student } from "./student";
 import { IStorage } from "./interface";
-import { StudentsLocalStorage } from "./localStorage";
-import { StudentsSessionStorage } from "./sessionStorage";
 export class StudentManager {
   constructor(typeStorage: IStorage) {
     this._storage = typeStorage;
@@ -10,12 +8,17 @@ export class StudentManager {
   get students(): Student[] {
     return this._students;
   }
+  
+  private _storage: IStorage | null = null;
+  private storage(): IStorage {
+    if (this._storage == null) {
+      throw new Error("storage not found");
+    }
+    return this._storage;
+  }
 
-  private _storage: IStorage = new StudentsLocalStorage(); //localStorage 
-  //private _storage: IStorage = new StudentsSessionStorage(); //sessionStorage
-
-  async setup(){
-    this._students = await this._storage.getStudents();
+  async setup() {
+    this._students = await this.storage().getStudents();
   }
 
   createStudent(
@@ -26,7 +29,7 @@ export class StudentManager {
   ): void {
     const student = new Student(name, surname, birthday, group);
     this.students.push(student);
-    this._storage.saveStudents(this.students);
+    this.storage().saveStudents(this.students);
   }
 
   deleteStudent(studentSurname: string): boolean {
@@ -38,7 +41,7 @@ export class StudentManager {
         (o) => o.surname === studentSurname
       );
       this.students.splice(studentIndex, 1);
-      this._storage.saveStudents(this.students);
+      this.storage().saveStudents(this.students);
       return true;
     } else {
       return false;
@@ -62,7 +65,7 @@ export class StudentManager {
           (student[changeSelection] as any) = whatToChange;
           break;
       }
-      this._storage.saveStudents(this.students);
+      this.storage().saveStudents(this.students);
       return true;
     } else {
       return false;
