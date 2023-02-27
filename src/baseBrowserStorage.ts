@@ -1,4 +1,4 @@
-import { Student } from "./student";
+import { Student } from "./Student";
 import { IStorage } from "./interface";
 export abstract class BaseBrowserStorage implements IStorage {
   private _key: string = "test";

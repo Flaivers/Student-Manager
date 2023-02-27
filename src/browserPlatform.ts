@@ -1,8 +1,8 @@
-import { StudentManager } from "./studentManager";
-import { ToastManager } from "./toastManager";
+import { StudentManager } from "./StudentManager";
+import { ToastManager } from "./ToastManager";
 import { getElementById } from "./utils";
-import { StudentsLocalStorage } from "./studentsLocalStorage";
-import { StudentsSessionStorage } from "./studentsSessionStorage";
+import { StudentsLocalStorage } from "./StudentsLocalStorage";
+import { StudentsSessionStorage } from "./StudentsSessionStorage";
 export class BrowserPlatform {
   private manager: StudentManager = new StudentManager(new StudentsLocalStorage());
   constructor() {
