@@ -1,2 +1,2 @@
-import {BrowserPlatform} from "./browserPlatform";
+import {BrowserPlatform} from "./BrowserPlatform";
 const platform = new BrowserPlatform();
