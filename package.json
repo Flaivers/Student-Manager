@@ -9,7 +9,7 @@
     "build": "tsc",
     "build2": "webpack",
     "cleaning": "rimraf ./docs/",
-    "start": "rimraf ./docs/ & npm run build2 & http-server ./docs/"
+    "start": "rimraf ./docs/ & webpack & http-server ./docs/"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,9 @@
   },
   "homepage": "https://github.com/Flaivers/Student-Manager#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "readline-sync": "latest",
     "spectre.css": "^0.5.9"
   },

@@ -58,4 +58,13 @@ export class ToastManager {
       "toast-error"
     );
   }
+
+  showWarningMessage(message: string, options: MessageOptions): void {
+    this.showMessage(
+      message,
+      options.delay,
+      options.isButtonVisible,
+      "toast-warning"
+    );
+  }
 }

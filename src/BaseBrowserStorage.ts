@@ -1,6 +1,6 @@
 import { Student } from "./Student";
-import { IStorage } from "./interface";
-export abstract class BaseBrowserStorage implements IStorage {
+import { ClientStorage } from "./interface";
+export abstract class BaseBrowserStorage implements ClientStorage {
   private _key: string = "test";
 
   getStudents(): Promise<Student[]> {
@@ -14,6 +14,7 @@ export abstract class BaseBrowserStorage implements IStorage {
         elementNumber++
       ) {
         const student1 = new Student(
+          students[elementNumber].id,
           students[elementNumber].name,
           students[elementNumber].surname,
           students[elementNumber].birthday,
