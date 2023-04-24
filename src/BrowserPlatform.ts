@@ -164,12 +164,12 @@ export class BrowserPlatform {
   private checkInputCreate(): boolean {
     const nameB = this.checkInput("Name");
     const surnameB = this.checkInput("Surname");
-    const BirthdayB = this.checkInputDate("Birthday");
+    const birthdayB = this.checkInputDate("Birthday");
     const groupB = this.checkInputNumber("Group");
     if (
       nameB == false ||
       surnameB == false ||
-      BirthdayB == false ||
+      birthdayB == false ||
       groupB == false
     ) {
       if (nameB == false) {
@@ -184,7 +184,7 @@ export class BrowserPlatform {
           isButtonVisible: true,
         });
       }
-      if (BirthdayB == false) {
+      if (birthdayB == false) {
         ToastManager.instance.showWarningMessage("Birthday is incorrect", {
           delay: 3000,
           isButtonVisible: true,
@@ -217,15 +217,15 @@ export class BrowserPlatform {
 
   private checkInputUpdate(): boolean {
     const updateB = this.checkInputNumber("updateId");
-    const ValueB = this.checkSelect();
-    if (updateB == false || ValueB == false) {
+    const valueB = this.checkSelect();
+    if (updateB == false || valueB == false) {
       if (updateB == false) {
         ToastManager.instance.showWarningMessage("id is incorrect", {
           delay: 3000,
           isButtonVisible: true,
         });
       }
-      if (ValueB == false) {
+      if (valueB == false) {
         ToastManager.instance.showWarningMessage("Value is incorrect", {
           delay: 3000,
           isButtonVisible: true,
@@ -244,15 +244,15 @@ export class BrowserPlatform {
     }
     let text = elements.options[elements.selectedIndex].text;
     if (text == "group") {
-      const ValueNum = this.checkInputNumber("enterChanges");
-      return ValueNum;
+      const valueNum = this.checkInputNumber("enterChanges");
+      return valueNum;
     }
     if (text == "birthday") {
-      const ValueDate = this.checkInputDate("enterChanges");
-      return ValueDate;
+      const valueDate = this.checkInputDate("enterChanges");
+      return valueDate;
     } else {
-      const ValueStr = this.checkInput("enterChanges");
-      return ValueStr;
+      const valueStr = this.checkInput("enterChanges");
+      return valueStr;
     }
   }
 
