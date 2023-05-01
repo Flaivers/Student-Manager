@@ -15,35 +15,30 @@ body {
 
 .inputLine {
   height: 100%;
+  width: 13%;
   padding: 10px;
-  margin: 10px;
+  margin: 0 auto;
   display: none;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   color: white;
 }
 
 .delete {
-  height: 100%;
-  padding: 10px;
-  margin: 10px;
   display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
 }
 
 .update {
-  height: 100%;
-  padding: 10px;
-  margin: 10px;
   display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
+}
+
+.select {
+  color: black;
+}
+
+.btn1 {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 table td {
@@ -59,7 +54,5 @@ table th {
 table {
   border: 1px solid white;
   width: 50%;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }

@@ -20,42 +20,52 @@
         <input type="button" class="btn btn-lg" value="Update students" id="showStudentUpdate">
     </div>
 
-
-    <div class="inputLine form-group">
-        <label>Name: <input class="form-input" placeholder="Name" type="text" id="Name"></label>
+    <div class="inputLine form-group ">
+        <label class="form-label" for="Name">Name</label>
+        <input class="form-input is-success" type="text" placeholder="Name" id="Name" required maxlength="10">
         <br>
-        <label>Surname: <input class="form-input" placeholder="Surname" type="text" id="Surname"></label>
+        <label class="form-label" for="Surname">Surname</label>
+        <input class="form-input" type="text" placeholder="Surname" id="Surname" required maxlength="20">
         <br>
-        <label>Birthday: <input class="form-input" placeholder="Birthday" type="text" id="Birthday"></label>
+        <label class="form-label" for="Birthday">Birthday</label>
+        <input class="form-input" type="date" id="Birthday">
         <br>
-        <label>Group: <input class="form-input" placeholder="Group" type="text" id="Group"></label>
+        <label class="form-label" for="Group">Group</label>
+        <input class="form-input" type="number" placeholder="1" id="Group" required>
         <br>
-        <input type="button" class="btn" value="Create" id="createButton">
+        <input type="button" class="btn btn1" value="Create" id="createButton">
     </div> 
 
 
-    <div class="delete">
-      <label>Enter Surname:<input class="form-input" type="text" placeholder="Surname" id="deleteSurname"></label>
+    <div class="inputLine delete">
+      <label class="form-label" for="deleteId">Enter id</label>
+      <input class="form-input" type="number" placeholder="id" id="deleteId" required>
       <br>
-      <input type="button" class="btn" value="Delete" id="deleteButton">
+      <input type="button" class="btn btn1" value="Delete" id="deleteButton">
     </div>
 
 
-    <div class="update">
-      <label> Enter Surname: <input class="form-input" type="text" placeholder="Surname" id="updateSurname"></label>
+    <div class="inputLine update">
+      <label class="form-label" for="updateId">Enter id</label>
+      <input class="form-input" type="number" placeholder="id" id="updateId" required>
       <br>
-      <label> What to change: <input class="form-input" type="text" placeholder="name, surname, ..." id="updateData"></label>
+      <label class="form-label" for="updateData">Property</label> 
+      <select class="form-select select" id="updateData"></select>
+      </label>
       <br>
-      <label> Enter changes: <input class="form-input" type="text" placeholder="Bob" id="enterChanges"></label>
+      <label class="form-label" for="enterChanges">Value</label>
+      <input class="form-input" type="text" id="enterChanges" required  maxlength="20">
       <br>
-      <input type="button" class="btn" value="Update" id="updateButton">
+      <input type="button" class="btn btn1" value="Update" id="updateButton">
     </div>
+
 
     <div class="container">
       <div class="columns col-6 col-mx-auto ">
       <table class="table ">
         <thead>
         <tr>
+          <th scope="col">Id</th>
           <th scope="col">Name</th>
           <th scope="col">Surname</th>
           <th scope="col">Birthday</th>
